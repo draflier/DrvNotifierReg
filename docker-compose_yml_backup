@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongo-db:
+    container_name: mongo-db
+    image: mongo
+    ports:
+      - "27017:27017"
+  backend:
+    container_name: node-backend
+    build: 
+      context: ./node-backend
+      dockerfile: DockerFile 
+    ports:
+      - "6200:6200"
+    volumes:
+      - ./node-backend:/usr/src/app
+    depends_on:
+      - mongo-db
+  frontend:
+    container_name: react-frontend
+    build: 
+      context: ./react-frontend
+      dockerfile: DockerFile 
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./react-frontend:/usr/src/app
+    depends_on:
+      - backend

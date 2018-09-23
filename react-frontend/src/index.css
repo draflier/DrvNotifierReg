@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#todo-list a{
+  margin-left: 10px;
+}
+
+button[type="submit"]
+{
+  margin-right: 10px;
+}
